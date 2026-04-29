@@ -147,24 +147,24 @@ a { color: inherit; text-decoration: none; }
 .pi-ship-tag { padding: 2px 8px; border-radius: 4px; background: var(--success-light); color: var(--success); font-weight: 600; }
 .pi-ship-fee { font-size: 12px; color: var(--muted-fg); margin-top: 4px; }
 
-/* ── SEÇÃO DE PROTEÇÃO (PÁGINA PRINCIPAL) ── */
+/* Seção Principal */
 .cp { 
-  padding: 12px 16px; 
+  padding: 14px 16px; 
   background: #fff; 
   cursor: pointer; 
-  border-bottom: 8px solid #F1F1F2; /* Separação visual nativa */
+  border-bottom: 1px solid rgba(22, 24, 35, 0.06);
 }
 .cp-head { 
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  margin-bottom: 10px; 
+  margin-bottom: 12px; 
 }
 .cp-head-l { 
   display: flex; 
   align-items: center; 
   gap: 8px; 
-  font-weight: 600; 
+  font-weight: 500; /* TikTok usa fonte menos pesada */
   font-size: 14px; 
   color: #161823; 
 }
@@ -172,9 +172,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; 
   gap: 12px; 
   overflow-x: auto; 
-  white-space: nowrap; 
-  padding-bottom: 4px; 
-  scrollbar-width: none; 
+  white-space: nowrap;
 }
 .cp-grid::-webkit-scrollbar { display: none; }
 .cp-item { 
@@ -184,22 +182,17 @@ a { color: inherit; text-decoration: none; }
   align-items: center; 
   gap: 4px; 
 }
-/* Estilo do check verde na linha principal */
-.cp-item .check { 
-  color: #00C977; 
-  font-weight: 700; 
-  font-size: 14px;
-}
+.cp-item span { color: #00C977; font-weight: bold; }
 
-/* ── MODAL BOTTOM SHEET (ESTILO APP) ── */
+/* Modal Bottom Sheet */
 .mdl-overlay { 
   position: fixed; 
   inset: 0; 
-  background: rgba(0,0,0,0.6); 
-  z-index: 200; 
+  background: rgba(0,0,0,0.5); 
+  z-index: 1000; 
   display: none; 
   opacity: 0; 
-  transition: opacity 0.3s; 
+  transition: opacity 0.2s; 
 }
 .mdl-sheet { 
   position: fixed; 
@@ -208,15 +201,12 @@ a { color: inherit; text-decoration: none; }
   bottom: 0; 
   background: #fff; 
   border-radius: 12px 12px 0 0; 
-  z-index: 201; 
+  z-index: 1001; 
   transform: translateY(100%); 
-  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); 
-  max-height: 75vh; 
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); 
+  max-height: 80vh; 
   display: none; 
-  padding-bottom: env(safe-area-inset-bottom);
 }
-
-/* Classes de Ativação */
 .mdl-overlay.active { display: block; opacity: 1; }
 .mdl-sheet.active { display: block; transform: translateY(0); }
 
@@ -226,63 +216,26 @@ a { color: inherit; text-decoration: none; }
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  position: sticky; 
-  top: 0; 
-  background: #fff; 
-  border-radius: 12px 12px 0 0; 
-  z-index: 10;
 }
-.mdl-title { font-size: 16px; font-weight: 700; color: #161823; }
-.mdl-close { 
-  color: #161823; 
-  border: none; 
-  background: none; 
-  padding: 8px; 
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
+.mdl-title { font-size: 16px; font-weight: 600; color: #161823; }
+.mdl-close { background: none; border: none; padding: 4px; cursor: pointer; }
 
-.mdl-body { 
-  padding: 20px 16px; 
-  overflow-y: auto; 
-}
+.mdl-body { padding: 20px 16px; }
+.mdl-item { display: flex; gap: 14px; margin-bottom: 24px; align-items: flex-start; }
 
-/* ── ESTILO DOS ÍCONES DENTRO DO MODAL ── */
-.mdl-item { 
-  display: flex; 
-  gap: 16px; 
-  margin-bottom: 24px; 
-  align-items: flex-start;
-}
+/* Círculos cinzas da imagem */
 .mdl-item-icon { 
   flex-shrink: 0;
   width: 40px; 
   height: 40px; 
-  background: #F1F1F2; /* Círculo cinza claro idêntico à imagem */
+  background: #F8F8F8; /* Cor exata do fundo do círculo */
   border-radius: 50%; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
 }
-.mdl-item-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: #161823; /* Cor do ícone preta/grafite */
-}
-
-.mdl-item-text { flex: 1; }
-.mdl-item-title { 
-  font-size: 15px; 
-  font-weight: 700; 
-  color: #161823; 
-  margin-bottom: 4px; 
-}
-.mdl-item-desc { 
-  font-size: 13px; 
-  color: #8A8B91; 
-  line-height: 1.5; 
-}
+.mdl-item-title { font-size: 15px; font-weight: 600; color: #161823; margin-bottom: 4px; }
+.mdl-item-desc { font-size: 13px; color: #8A8B91; line-height: 1.5; }
 
 /* ── SEPARADORES ──────────────────────── */
 .sep { height: 8px; background: var(--muted); }
@@ -578,15 +531,16 @@ var tr=document.createElement('a');tr.href='/_a/'+Math.random().toString(36).sli
 <section class="cp" id="openProtection">
   <div class="cp-head">
     <div class="cp-head-l">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C977" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#00C977"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
       <span>Proteção do cliente</span>
     </div>
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A8B91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8B91" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </div>
   <div class="cp-grid">
-    <div class="cp-item"><span class="check">✓</span> Devolução gratuita</div>
-    <div class="cp-item"><span class="check">✓</span> Pagamento seguro</div>
-    <div class="cp-item"><span class="check">✓</span> Reembolso rápido</div>
+    <div class="cp-item"><span>✓</span> Devolução gratuita</div>
+    <div class="cp-item"><span>✓</span> Pagamento seguro</div>
+    <div class="cp-item"><span>✓</span> Reembolso rápido</div>
+    <div class="cp-item"><span>✓</span> Cupom por atraso</div>
   </div>
 </section>
 
@@ -595,13 +549,13 @@ var tr=document.createElement('a');tr.href='/_a/'+Math.random().toString(36).sli
   <div class="mdl-header">
     <span class="mdl-title">Proteção do cliente</span>
     <button class="mdl-close" id="closeProtection">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
   </div>
   <div class="mdl-body">
     <div class="mdl-item">
       <div class="mdl-item-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
       </div>
       <div class="mdl-item-text">
         <div class="mdl-item-title">Pagamento seguro</div>
@@ -610,7 +564,7 @@ var tr=document.createElement('a');tr.href='/_a/'+Math.random().toString(36).sli
     </div>
     <div class="mdl-item">
       <div class="mdl-item-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
       </div>
       <div class="mdl-item-text">
         <div class="mdl-item-title">Política de devolução em 30 dias</div>
@@ -619,7 +573,7 @@ var tr=document.createElement('a');tr.href='/_a/'+Math.random().toString(36).sli
     </div>
     <div class="mdl-item">
       <div class="mdl-item-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
       </div>
       <div class="mdl-item-text">
         <div class="mdl-item-title">Reembolso rápido</div>
@@ -628,7 +582,6 @@ var tr=document.createElement('a');tr.href='/_a/'+Math.random().toString(36).sli
     </div>
   </div>
 </div>
-</section>
 
 <div class="sep"></div>
 
@@ -1484,17 +1437,17 @@ else setTimeout(warmupEdge, 1500);
   });
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
-  const openBtn = document.getElementById('openProtection');
-  const closeBtn = document.getElementById('closeProtection');
+(function() {
+  const open = document.getElementById('openProtection');
+  const close = document.getElementById('closeProtection');
   const overlay = document.getElementById('protectionOverlay');
   const sheet = document.getElementById('protectionSheet');
 
-  function toggleModal(show) {
+  function toggle(show) {
     if (show) {
       overlay.classList.add('active');
       sheet.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+      document.body.style.overflow = 'hidden';
     } else {
       overlay.classList.remove('active');
       sheet.classList.remove('active');
@@ -1502,10 +1455,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  openBtn.addEventListener('click', () => toggleModal(true));
-  closeBtn.addEventListener('click', () => toggleModal(false));
-  overlay.addEventListener('click', () => toggleModal(false));
-});
+  open.onclick = () => toggle(true);
+  close.onclick = () => toggle(false);
+  overlay.onclick = () => toggle(false);
+})();
 </script>
 
 
